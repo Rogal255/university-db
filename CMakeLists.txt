@@ -3,4 +3,4 @@ project(university_db)
 
 set(CMAKE_CXX_STANDARD 20)
 
-add_executable(university_db main.cpp Person.cpp Student.cpp)
+add_executable(university_db main.cpp Person.cpp Student.cpp Employee.cpp Database.cpp)
