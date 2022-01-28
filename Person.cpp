@@ -9,5 +9,5 @@ Gender Person::getGender() noexcept { return gender_; };
 const std::string& Person::getPersonalID() noexcept { return personalID_; };
 std::optional<std::size_t> Person::getIndex() noexcept { return std::nullopt; };
 std::optional<std::size_t> Person::getSalary() noexcept { return std::nullopt; };
-bool Person::setIndex() noexcept { return false; }
-bool Person::setSalary() noexcept { return false; };
+bool Person::setIndex(std::size_t) noexcept { return false; }
+bool Person::setSalary(std::size_t) noexcept { return false; };
