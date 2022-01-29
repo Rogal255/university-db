@@ -8,15 +8,17 @@
 #include <vector>
 
 class Database {
+    using PersonPtr = std::unique_ptr<Person>;
 public:
     [[nodiscard]] std::vector<const Person*> searchBySurname(const std::string& surname) const noexcept;
-    [[nodiscard]] std::optional<const Person*> searchByPersonalID(const std::string& personalID) const noexcept;
+    [[nodiscard]] std::optional<Person*> searchByPersonalID(const std::string& personalID) const noexcept;
     void sortBySurname() noexcept;
     void sortByPersonalID() noexcept;
     void sortBySalary() noexcept;
-    bool changeSalary(std::size_t personalID) noexcept;
-    bool deleteByIndex(std::size_t index) noexcept;
+    [[nodiscard]] bool changeSalary(const std::string& personalID, std::size_t newSalary) const noexcept;
+    [[nodiscard]] bool deleteByIndex(std::size_t index) noexcept;
 
 private:
-    std::vector<std::unique_ptr<Person>> db_;
+    std::vector<PersonPtr> db_;
+    static std::size_t getSalary(PersonPtr& person) noexcept;
 };
