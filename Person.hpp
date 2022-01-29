@@ -6,6 +6,7 @@
 
 class Person {
 public:
+    virtual ~Person() = default;
     const std::string& getName() noexcept;
     const std::string& getSurname() noexcept;
     const Address& getAddress() noexcept;
