@@ -4,7 +4,11 @@
 #include <optional>
 #include <string>
 
+class PersonManualBuilder;
+
 class Person {
+    friend PersonManualBuilder;
+
 public:
     virtual ~Person() = default;
     const std::string& getName() noexcept;

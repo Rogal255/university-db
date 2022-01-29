@@ -4,6 +4,8 @@
 #include <memory>
 #include <optional>
 
+void Database::addPerson(std::unique_ptr<Person> personPtr) { db_.push_back(std::move(personPtr)); }
+
 std::vector<const Person*> Database::searchBySurname(const std::string& surname) const noexcept {
     std::vector<const Person*> vec;
     for (auto it = db_.cbegin();;) {
@@ -65,7 +67,7 @@ bool Database::deleteByIndex(std::size_t index) noexcept {
     return false;
 }
 
-std::size_t Database::getSalary(PersonPtr& person) noexcept {
+std::size_t Database::getSalary(std::unique_ptr<Person>& person) noexcept {
     if (auto opt = person->getSalary()) {
         return *opt;
     }

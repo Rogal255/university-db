@@ -1,7 +1,11 @@
 #pragma once
 #include "Person.hpp"
 
+class StudentManualBuilder;
+
 class Student : public Person {
+    friend StudentManualBuilder;
+
 public:
     ~Student() override = default;
     std::optional<std::size_t> getIndex() noexcept override;
