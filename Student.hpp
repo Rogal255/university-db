@@ -1,10 +1,8 @@
 #pragma once
 #include "Person.hpp"
 
-class StudentManualBuilder;
-
 class Student : public Person {
-    friend StudentManualBuilder;
+    friend class StudentManualBuilder;
 
 public:
     ~Student() override = default;
@@ -12,5 +10,6 @@ public:
     bool setIndex(std::size_t newIndex) noexcept override;
 
 private:
-    std::size_t index_;
+    Student() = default;
+    std::size_t index_ {0};
 };

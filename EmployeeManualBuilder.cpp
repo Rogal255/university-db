@@ -2,7 +2,7 @@
 #include "Employee.hpp"
 #include <iostream>
 
-void EmployeeManualBuilder::init() noexcept { object = std::make_unique<Employee>(); }
+void EmployeeManualBuilder::init() noexcept { object = std::unique_ptr<Employee>(new Employee); }
 
 void EmployeeManualBuilder::setCustomData() noexcept {
     std::size_t salary {0};

@@ -4,10 +4,8 @@
 #include <optional>
 #include <string>
 
-class PersonManualBuilder;
-
 class Person {
-    friend PersonManualBuilder;
+    friend class PersonManualBuilder;
 
 public:
     virtual ~Person() = default;
@@ -21,10 +19,13 @@ public:
     virtual bool setIndex(std::size_t) noexcept;
     virtual bool setSalary(std::size_t) noexcept;
 
+protected:
+    Person() = default;
+
 private:
     std::string name_;
     std::string surname_;
     Address address_;
-    Gender gender_;
+    Gender gender_ {Gender::NotSpecified};
     std::string personalID_;
 };
