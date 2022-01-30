@@ -21,6 +21,7 @@ add_executable(university_db
         PersonManualBuilder.cpp
         PersonRandomBuilder.cpp
         StudentManualBuilder.cpp
+        StudentRandomBuilder.cpp
         EmployeeManualBuilder.cpp
         PersonBuilderDirector.cpp)
 

@@ -6,6 +6,7 @@
 
 class Person {
     friend class PersonManualBuilder;
+    friend class PersonRandomBuilder;
 
 public:
     virtual ~Person() = default;

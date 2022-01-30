@@ -3,6 +3,7 @@
 
 class Student : public Person {
     friend class StudentManualBuilder;
+    friend class StudentRandomBuilder;
 
 public:
     ~Student() override = default;
