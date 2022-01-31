@@ -23,6 +23,7 @@ add_executable(university_db
         StudentManualBuilder.cpp
         StudentRandomBuilder.cpp
         EmployeeManualBuilder.cpp
+        EmployeeRandomBuilder.cpp
         PersonBuilderDirector.cpp)
 
 target_link_libraries(university_db PRIVATE nlohmann_json::nlohmann_json)

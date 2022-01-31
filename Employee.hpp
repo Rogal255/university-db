@@ -3,6 +3,8 @@
 
 class Employee : public Person {
     friend class EmployeeManualBuilder;
+    friend class EmployeeRandomBuilder;
+
 public:
     ~Employee() override = default;
     std::optional<std::size_t> getSalary() noexcept override;
