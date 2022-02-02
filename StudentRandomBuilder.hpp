@@ -8,6 +8,6 @@ public:
     void setCustomData() noexcept final;
 
 private:
-    std::vector<size_t> usedIndexes;
-    size_t maxNumberOfIndexes {10'000};
+    std::vector<std::size_t> usedIndexes;
+    std::size_t maxNumberOfIndexes {10'000};
 };

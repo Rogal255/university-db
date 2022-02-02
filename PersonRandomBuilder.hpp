@@ -2,6 +2,7 @@
 #include "nlohmann/json.hpp"
 #include "PersonBuilder.hpp"
 #include <random>
+#include <type_traits>
 
 class PersonRandomBuilder : public PersonBuilder {
 public:
@@ -16,10 +17,9 @@ public:
     void setCustomData() noexcept override = 0;
 
 protected:
-    std::random_device rd {};
-    std::mt19937 mt {rd()};
+    template <typename T>
+    T getRandomNumber(T from, T to) requires std::is_integral_v<T>;
 
-private:
-    nlohmann::json data;
+private : nlohmann::json data;
     Gender gender_ {Gender::NotSpecified};
 };
