@@ -1,7 +1,6 @@
 #pragma once
 #include "nlohmann/json.hpp"
 #include "PersonBuilder.hpp"
-#include <random>
 #include <type_traits>
 
 class PersonRandomBuilder : public PersonBuilder {
@@ -17,9 +16,9 @@ public:
     void setCustomData() override = 0;
 
 protected:
-    template <typename T>
-    T getRandomNumber(T from, T to) noexcept requires std::is_integral_v<T>;
+    static std::size_t getRandomNumber(std::size_t from, std::size_t to) noexcept;
 
-private : nlohmann::json data;
+private:
+    nlohmann::json data;
     Gender gender_ {Gender::NotSpecified};
 };
