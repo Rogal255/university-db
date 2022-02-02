@@ -8,12 +8,12 @@ class PersonBuilder {
 public:
     virtual ~PersonBuilder() = default;
     virtual void init() noexcept = 0;
-    virtual void setName() noexcept = 0;
-    virtual void setSurname() noexcept = 0;
-    virtual void setAddress() noexcept = 0;
+    virtual void setName() = 0;
+    virtual void setSurname() = 0;
+    virtual void setAddress() = 0;
     virtual BuilderError setGender() noexcept = 0;
-    virtual BuilderError setPersonalID() noexcept = 0;
-    virtual void setCustomData() noexcept = 0;
+    virtual BuilderError setPersonalID() = 0;
+    virtual void setCustomData() = 0;
     std::unique_ptr<Person> getObject();
 
 protected:

@@ -9,16 +9,16 @@ public:
     PersonRandomBuilder();
     ~PersonRandomBuilder() override = default;
     void init() noexcept override = 0;
-    void setName() noexcept final;
-    void setSurname() noexcept final;
-    void setAddress() noexcept final;
+    void setName() final;
+    void setSurname() final;
+    void setAddress() final;
     BuilderError setGender() noexcept final;
-    BuilderError setPersonalID() noexcept final;
-    void setCustomData() noexcept override = 0;
+    BuilderError setPersonalID() final;
+    void setCustomData() override = 0;
 
 protected:
     template <typename T>
-    T getRandomNumber(T from, T to) requires std::is_integral_v<T>;
+    T getRandomNumber(T from, T to) noexcept requires std::is_integral_v<T>;
 
 private : nlohmann::json data;
     Gender gender_ {Gender::NotSpecified};
