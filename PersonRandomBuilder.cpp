@@ -3,7 +3,6 @@
 #include <fstream>
 #include <random>
 #include <stdexcept>
-#include <type_traits>
 
 PersonRandomBuilder::PersonRandomBuilder() {
     std::fstream fileStream("assets/data.json");
@@ -35,7 +34,29 @@ BuilderError PersonRandomBuilder::setGender() noexcept {
     object->gender_ = gender_;
     return BuilderError::OK;
 }
-BuilderError PersonRandomBuilder::setPersonalID() { return BuilderError::OK; }
+
+BuilderError PersonRandomBuilder::setPersonalID() {
+    static std::size_t femaleID {0};
+    static std::size_t maleID {0};
+    if (gender_ == Gender::Female) {
+        if (femaleID == data["femaleIDs"].size()) {
+            return BuilderError::BadPersonalID;
+        }
+        if (checkPersonalID(data["femaleIDs"][femaleID])) {
+            object->personalID_ = data["femaleIDs"][femaleID++];
+            return BuilderError::OK;
+        }
+    } else if (gender_ == Gender::Male) {
+        if (maleID == data["maleIDs"].size()) {
+            return BuilderError::BadPersonalID;
+        }
+        if (checkPersonalID(data["maleIDs"][maleID])) {
+            object->personalID_ = data["maleIDs"][maleID++];
+            return BuilderError::OK;
+        }
+    }
+    return BuilderError::BadPersonalID;
+}
 
 std::size_t PersonRandomBuilder::getRandomNumber(std::size_t from, std::size_t to) noexcept {
     std::random_device rd;

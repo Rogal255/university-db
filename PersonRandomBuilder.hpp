@@ -1,7 +1,6 @@
 #pragma once
 #include "nlohmann/json.hpp"
 #include "PersonBuilder.hpp"
-#include <type_traits>
 
 class PersonRandomBuilder : public PersonBuilder {
 public:
