@@ -28,7 +28,12 @@ void PersonRandomBuilder::setSurname() {
         object->surname_ = data["maleSurnames"][getRandomNumber(0, data["maleSurnames"].size() - 1)];
     }
 }
-void PersonRandomBuilder::setAddress() { }
+void PersonRandomBuilder::setAddress() {
+    object->address_.building = std::to_string(getRandomNumber(1, 100));
+    object->address_.flat = std::to_string(getRandomNumber(1, 300));
+    object->address_.country = "Polska";
+    object->address_.street = data["streets"][getRandomNumber(0, data["streets"].size() - 1)];
+}
 
 BuilderError PersonRandomBuilder::setGender() noexcept {
     object->gender_ = gender_;

@@ -12,7 +12,7 @@ int main() {
     std::unique_ptr<Person> ptr;
     for (uint8_t i {0}; i < 100; ++i) {
         ptr = director.create();
-        std::cout << ptr->getName() << ' ' << ptr->getSurname() << ' ' << ptr->getPersonalID() << '\n';
+        std::cout << ptr->getName() << ' ' << ptr->getSurname() << ' ' << ptr->getAddress().street << '\n';
     }
     return 0;
 }
