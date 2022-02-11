@@ -29,10 +29,16 @@ void PersonRandomBuilder::setSurname() {
     }
 }
 void PersonRandomBuilder::setAddress() {
+    // Addresses don't reflect real places - they are generated randomly from possible values of streets, cities etc
     object->address_.building = std::to_string(getRandomNumber(1, 100));
     object->address_.flat = std::to_string(getRandomNumber(1, 300));
-    object->address_.country = "Polska";
     object->address_.street = data["streets"][getRandomNumber(0, data["streets"].size() - 1)];
+    object->address_.city = data["cities"][getRandomNumber(0, data["cities"].size() - 1)];
+    object->address_.country = "Polska";
+    std::string zipFirstPart = "0" + std::to_string(getRandomNumber(1, 99));
+    std::string zipSecondPart = "00" + std::to_string(getRandomNumber(1, 999));
+    object->address_.zip
+        = zipFirstPart.substr(zipFirstPart.size() - 2, 2) + "-" + zipSecondPart.substr(zipSecondPart.size() - 3, 3);
 }
 
 BuilderError PersonRandomBuilder::setGender() noexcept {
