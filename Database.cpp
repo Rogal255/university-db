@@ -14,6 +14,7 @@ std::vector<const Person*> Database::searchBySurname(const std::string& surname)
             return vec;
         }
         vec.push_back(it->get());
+        ++it;
     }
 }
 

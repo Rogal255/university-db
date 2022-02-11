@@ -1,9 +1,9 @@
+#include "Database.hpp"
 #include "EmployeeManualBuilder.hpp"
 #include "EmployeeRandomBuilder.hpp"
 #include "Person.hpp"
 #include "PersonBuilderDirector.hpp"
 #include "StudentRandomBuilder.hpp"
-#include "Database.hpp"
 #include <iostream>
 #include <memory>
 
@@ -20,8 +20,15 @@ int main() {
     for (uint8_t i {0}; i < 50; ++i) {
         db.addPerson(director.create());
     }
-    //db.printToConsole();
-    db.sortByPersonalID();
     db.printToConsole();
+    std::string id {};
+    std::cout << "PersonalID to change salary: ";
+    std::cin >> id;
+    std::cout << "New salary: ";
+    std::size_t newSalary;
+    std::cin >> newSalary;
+    if (db.changeSalary(id, newSalary)) {
+        db.printToConsole();
+    }
     return 0;
 }
