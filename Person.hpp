@@ -19,9 +19,11 @@ public:
     virtual std::optional<std::size_t> getSalary() noexcept;
     virtual bool setIndex(std::size_t) noexcept;
     virtual bool setSalary(std::size_t) noexcept;
+    virtual void printToConsole() const = 0;
 
 protected:
     Person() = default;
+    void printBasicDataToConsole() const;
 
 private:
     std::string name_;

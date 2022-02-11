@@ -17,6 +17,7 @@ public:
     void sortBySalary() noexcept;
     [[nodiscard]] bool changeSalary(const std::string& personalID, std::size_t newSalary) const noexcept;
     [[nodiscard]] bool deleteByIndex(std::size_t index) noexcept;
+    void printToConsole();
 
 private:
     std::vector<std::unique_ptr<Person>> db_;

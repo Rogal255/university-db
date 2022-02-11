@@ -40,7 +40,7 @@ void Database::sortByPersonalID() noexcept {
 
 void Database::sortBySalary() noexcept {
     std::sort(db_.begin(), db_.end(), [](auto& person1, auto& person2) {
-        return Database::getSalary(person1) < Database::getSalary(person2);
+        return Database::getSalary(person1) > Database::getSalary(person2);
     });
 }
 
@@ -65,6 +65,12 @@ bool Database::deleteByIndex(std::size_t index) noexcept {
         return true;
     }
     return false;
+}
+
+void Database::printToConsole() {
+    for (const auto& person : db_) {
+        person->printToConsole();
+    }
 }
 
 std::size_t Database::getSalary(std::unique_ptr<Person>& person) noexcept {
