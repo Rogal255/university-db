@@ -6,8 +6,8 @@
 
 void Database::addPerson(std::unique_ptr<Person> personPtr) { db_.push_back(std::move(personPtr)); }
 
-std::vector<const Person*> Database::searchBySurname(const std::string& surname) const noexcept {
-    std::vector<const Person*> vec;
+std::vector<Person*> Database::searchBySurname(const std::string& surname) const noexcept {
+    std::vector<Person*> vec;
     for (auto it = db_.cbegin();;) {
         it = std::find_if(it, db_.cend(), [&](auto& person) { return person->getSurname() == surname; });
         if (it == db_.cend()) {

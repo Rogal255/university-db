@@ -12,7 +12,7 @@ class Database {
 
 public:
     void addPerson(std::unique_ptr<Person> personPtr);
-    [[nodiscard]] std::vector<const Person*> searchBySurname(const std::string& surname) const noexcept;
+    [[nodiscard]] std::vector<Person*> searchBySurname(const std::string& surname) const noexcept;
     [[nodiscard]] std::optional<Person*> searchByPersonalID(const std::string& personalID) const noexcept;
     void sortBySurname() noexcept;
     void sortByPersonalID() noexcept;

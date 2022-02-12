@@ -1,0 +1,77 @@
+[
+    {
+        "address": {
+            "building": "97",
+            "city": "Gdynia",
+            "country": "Polska",
+            "flat": "81",
+            "street": "Niebieska",
+            "zip": "42-648"
+        },
+        "gender": 1,
+        "id": "70060853997",
+        "name": "Filip",
+        "salary": 10221,
+        "surname": "Zalewski"
+    },
+    {
+        "address": {
+            "building": "22",
+            "city": "Warszawa",
+            "country": "Polska",
+            "flat": "153",
+            "street": "Sportowa",
+            "zip": "35-913"
+        },
+        "gender": 0,
+        "id": "60081877821",
+        "name": "Martyna",
+        "salary": 5479,
+        "surname": "Mazur"
+    },
+    {
+        "address": {
+            "building": "85",
+            "city": "Rzeszow",
+            "country": "Polska",
+            "flat": "249",
+            "street": "Sukiennice",
+            "zip": "17-998"
+        },
+        "gender": 1,
+        "id": "83022065334",
+        "index": 8538,
+        "name": "Tymoteusz",
+        "surname": "Kubiak"
+    },
+    {
+        "address": {
+            "building": "89",
+            "city": "Rzeszow",
+            "country": "Polska",
+            "flat": "238",
+            "street": "Norwida",
+            "zip": "19-645"
+        },
+        "gender": 1,
+        "id": "86050172252",
+        "index": 7399,
+        "name": "Jan",
+        "surname": "Mazur"
+    },
+    {
+        "address": {
+            "building": "76",
+            "city": "Krakow",
+            "country": "Polska",
+            "flat": "131",
+            "street": "Zabielska",
+            "zip": "95-082"
+        },
+        "gender": 0,
+        "id": "88112363385",
+        "index": 7475,
+        "name": "Aleksandra",
+        "surname": "Borkowska"
+    }
+]
