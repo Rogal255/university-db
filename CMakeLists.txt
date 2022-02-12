@@ -24,7 +24,8 @@ add_executable(university_db
         StudentRandomBuilder.cpp
         EmployeeManualBuilder.cpp
         EmployeeRandomBuilder.cpp
-        PersonBuilderDirector.cpp)
+        PersonBuilderDirector.cpp
+        DatabaseToFile.cpp)
 
 target_link_libraries(university_db PRIVATE nlohmann_json::nlohmann_json)
 file(COPY ./assets DESTINATION ./)

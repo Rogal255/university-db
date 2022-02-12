@@ -8,6 +8,8 @@
 #include <vector>
 
 class Database {
+    friend class DatabaseToFile;
+
 public:
     void addPerson(std::unique_ptr<Person> personPtr);
     [[nodiscard]] std::vector<const Person*> searchBySurname(const std::string& surname) const noexcept;

@@ -1,4 +1,5 @@
 #include "Database.hpp"
+#include "DatabaseToFile.hpp"
 #include "EmployeeManualBuilder.hpp"
 #include "EmployeeRandomBuilder.hpp"
 #include "Person.hpp"
@@ -21,14 +22,7 @@ int main() {
         db.addPerson(director.create());
     }
     db.printToConsole();
-    std::string id {};
-    std::cout << "PersonalID to change salary: ";
-    std::cin >> id;
-    std::cout << "New salary: ";
-    std::size_t newSalary;
-    std::cin >> newSalary;
-    if (db.changeSalary(id, newSalary)) {
-        db.printToConsole();
-    }
+    DatabaseToFile toFile;
+    toFile.saveToFile(db, "test");
     return 0;
 }
