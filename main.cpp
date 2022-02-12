@@ -5,7 +5,6 @@
 #include "Person.hpp"
 #include "PersonBuilderDirector.hpp"
 #include "StudentRandomBuilder.hpp"
-#include <iostream>
 #include <memory>
 
 int main() {
@@ -21,8 +20,11 @@ int main() {
     for (uint8_t i {0}; i < 50; ++i) {
         db.addPerson(director.create());
     }
-    db.printToConsole();
+    // db.printToConsole();
     DatabaseToFile toFile;
     toFile.saveToFile(db, "test");
+    Database db2;
+    toFile.loadFromFile(db2, "test");
+    db2.printToConsole();
     return 0;
 }

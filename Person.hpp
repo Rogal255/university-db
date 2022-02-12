@@ -7,6 +7,7 @@
 class Person {
     friend class PersonManualBuilder;
     friend class PersonRandomBuilder;
+    friend class PersonFileBuilder;
 
 public:
     virtual ~Person() = default;

@@ -4,6 +4,7 @@
 class Student : public Person {
     friend class StudentManualBuilder;
     friend class StudentRandomBuilder;
+    friend class StudentFileBuilder;
 
 public:
     ~Student() override = default;

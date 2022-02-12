@@ -1,7 +1,11 @@
 #include "DatabaseToFile.hpp"
 #include "Database.hpp"
+#include "EmployeeFileBuilder.hpp"
 #include "nlohmann/json.hpp"
+#include "PersonBuilderDirector.hpp"
+#include "StudentFileBuilder.hpp"
 #include <fstream>
+#include <stdexcept>
 #include <string>
 
 void DatabaseToFile::saveToFile(const Database& db, std::string&& fileName) {
@@ -12,6 +16,18 @@ void DatabaseToFile::saveToFile(const Database& db, std::string&& fileName) {
         throw std::runtime_error("Cannot save to file");
     }
     fileStream << std::setw(4) << data_;
+}
+
+void DatabaseToFile::loadFromFile(Database& db, std::string&& fileName) {
+    fileName += ".json";
+    std::ifstream fileStream(fileName);
+    if (!fileStream.is_open()) {
+        throw std::runtime_error("Cannot save to file");
+    }
+    data_.clear();
+    db.db_.clear();
+    fileStream >> data_;
+    fromJson(db);
 }
 
 void DatabaseToFile::toJson(const Database& db) {
@@ -33,5 +49,26 @@ void DatabaseToFile::toJson(const Database& db) {
         if (auto salary = db.db_[i]->getSalary()) {
             data_[i]["salary"] = *salary;
         }
+    }
+}
+
+void DatabaseToFile::fromJson(Database& db) {
+    PersonBuilderDirector director;
+    StudentFileBuilder studentBuilder;
+    EmployeeFileBuilder employeeBuilder;
+    for (std::size_t i {0}; i < data_.size(); ++i) {
+        if (data_[i].contains("index")) {
+            studentBuilder.setData(data_[i]);
+            director.changeBuilder(&studentBuilder);
+            db.addPerson(director.create());
+            continue;
+        }
+        if (data_[i].contains("salary")) {
+            employeeBuilder.setData(data_[i]);
+            director.changeBuilder(&employeeBuilder);
+            db.addPerson(director.create());
+            continue;
+        }
+        throw std::logic_error("Error reading from file");
     }
 }

@@ -4,6 +4,7 @@
 class Employee : public Person {
     friend class EmployeeManualBuilder;
     friend class EmployeeRandomBuilder;
+    friend class EmployeeFileBuilder;
 
 public:
     ~Employee() override = default;

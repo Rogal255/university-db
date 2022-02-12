@@ -20,10 +20,13 @@ add_executable(university_db
         PersonBuilder.cpp
         PersonManualBuilder.cpp
         PersonRandomBuilder.cpp
+        PersonFileBuilder.cpp
         StudentManualBuilder.cpp
         StudentRandomBuilder.cpp
+        StudentFileBuilder.cpp
         EmployeeManualBuilder.cpp
         EmployeeRandomBuilder.cpp
+        EmployeeFileBuilder.cpp
         PersonBuilderDirector.cpp
         DatabaseToFile.cpp)
 
