@@ -1,16 +1,16 @@
 #include "Person.hpp"
+#include "Helpers.hpp"
 #include <iostream>
 #include <optional>
 #include <stdexcept>
-#include <string>
 
-const std::string& Person::getName() noexcept { return name_; };
-const std::string& Person::getSurname() noexcept { return surname_; };
-const Address& Person::getAddress() noexcept { return address_; };
-Gender Person::getGender() noexcept { return gender_; };
-const std::string& Person::getPersonalID() noexcept { return personalID_; };
-std::optional<std::size_t> Person::getIndex() noexcept { return std::nullopt; };
-std::optional<std::size_t> Person::getSalary() noexcept { return std::nullopt; };
+const std::string& Person::getName() const noexcept { return name_; };
+const std::string& Person::getSurname() const noexcept { return surname_; };
+const Address& Person::getAddress() const noexcept { return address_; };
+Gender Person::getGender() const noexcept { return gender_; };
+const std::string& Person::getPersonalID() const noexcept { return personalID_; };
+std::optional<std::size_t> Person::getIndex() const noexcept { return std::nullopt; };
+std::optional<std::size_t> Person::getSalary() const noexcept { return std::nullopt; };
 bool Person::setIndex(std::size_t) noexcept { return false; }
 bool Person::setSalary(std::size_t) noexcept { return false; };
 

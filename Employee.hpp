@@ -8,7 +8,7 @@ class Employee : public Person {
 
 public:
     ~Employee() override = default;
-    std::optional<std::size_t> getSalary() noexcept override;
+    [[nodiscard]] std::optional<std::size_t> getSalary() const noexcept override;
     bool setSalary(std::size_t newSalary) noexcept override;
     void printToConsole() const override;
 

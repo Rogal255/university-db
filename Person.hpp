@@ -11,13 +11,13 @@ class Person {
 
 public:
     virtual ~Person() = default;
-    const std::string& getName() noexcept;
-    const std::string& getSurname() noexcept;
-    const Address& getAddress() noexcept;
-    Gender getGender() noexcept;
-    const std::string& getPersonalID() noexcept;
-    virtual std::optional<std::size_t> getIndex() noexcept;
-    virtual std::optional<std::size_t> getSalary() noexcept;
+    [[nodiscard]] const std::string& getName() const noexcept;
+    [[nodiscard]] const std::string& getSurname() const noexcept;
+    [[nodiscard]] const Address& getAddress() const noexcept;
+    [[nodiscard]] Gender getGender() const noexcept;
+    [[nodiscard]] const std::string& getPersonalID() const noexcept;
+    [[nodiscard]] virtual std::optional<std::size_t> getIndex() const noexcept;
+    [[nodiscard]] virtual std::optional<std::size_t> getSalary() const noexcept;
     virtual bool setIndex(std::size_t) noexcept;
     virtual bool setSalary(std::size_t) noexcept;
     virtual void printToConsole() const = 0;
