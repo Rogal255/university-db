@@ -64,12 +64,12 @@ protected:
     EmployeeRandomBuilder employeeBuilder;
     StudentRandomBuilder studentBuilder;
     PersonBuilderDirector director {&employeeBuilder};
+    nlohmann::json data;
 };
 
 TEST_F(DatabaseSortTest, sortBySurnameTest) {
     db.sortBySurname();
     jsonHandler.saveToFile(db, "tmp");
-    nlohmann::json data;
     std::ifstream fileStream("tmp.json");
     if (!fileStream.is_open()) {
         throw std::runtime_error("Cannot save to file");
