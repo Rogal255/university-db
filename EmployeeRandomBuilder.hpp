@@ -8,6 +8,6 @@ public:
     void setCustomData() noexcept final;
 
 private:
-    std::size_t minSalary {3000};
-    std::size_t maxSalary {20000};
+    int minSalary {3000};
+    int maxSalary {20000};
 };

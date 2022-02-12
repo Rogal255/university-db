@@ -7,5 +7,7 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(googletest)
 enable_testing()
 
-add_executable(UnitTests UnitTests.cpp)
-target_link_libraries(UnitTests PUBLIC ./Database PUBLIC nlohmann_json::nlohmann_json PUBLIC gtest_main)
+add_executable(RandomBuilderTest RandomBuilderTest.cpp)
+target_link_libraries(RandomBuilderTest PUBLIC ./Database PUBLIC nlohmann_json::nlohmann_json PUBLIC gtest_main)
+add_executable(DatabaseTest DatabaseTest.cpp)
+target_link_libraries(DatabaseTest PUBLIC ./Database PUBLIC nlohmann_json::nlohmann_json PUBLIC gtest_main)

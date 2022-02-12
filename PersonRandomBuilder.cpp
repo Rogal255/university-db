@@ -4,7 +4,12 @@
 #include <random>
 #include <stdexcept>
 
+std::size_t PersonRandomBuilder::femaleID {0};
+std::size_t PersonRandomBuilder::maleID {0};
+
 PersonRandomBuilder::PersonRandomBuilder() {
+    femaleID = 0;
+    maleID = 0;
     std::fstream fileStream("assets/data.json");
     if (!fileStream.is_open()) {
         throw std::runtime_error("Cannot find data.json");
@@ -15,25 +20,26 @@ PersonRandomBuilder::PersonRandomBuilder() {
 void PersonRandomBuilder::setName() {
     gender_ = static_cast<Gender>(getRandomNumber(0, 1));
     if (gender_ == Gender::Female) {
-        object->name_ = data["femaleNames"][getRandomNumber(0, data["femaleNames"].size() - 1)];
+        object->name_ = data["femaleNames"][getRandomNumber(0, static_cast<int>(data["femaleNames"].size() - 1))];
     } else if (gender_ == Gender::Male) {
-        object->name_ = data["maleNames"][getRandomNumber(0, data["maleNames"].size() - 1)];
+        object->name_ = data["maleNames"][getRandomNumber(0, static_cast<int>(data["maleNames"].size() - 1))];
     }
 }
 
 void PersonRandomBuilder::setSurname() {
     if (gender_ == Gender::Female) {
-        object->surname_ = data["femaleSurnames"][getRandomNumber(0, data["femaleSurnames"].size() - 1)];
+        object->surname_
+            = data["femaleSurnames"][getRandomNumber(0, static_cast<int>(data["femaleSurnames"].size() - 1))];
     } else if (gender_ == Gender::Male) {
-        object->surname_ = data["maleSurnames"][getRandomNumber(0, data["maleSurnames"].size() - 1)];
+        object->surname_ = data["maleSurnames"][getRandomNumber(0, static_cast<int>(data["maleSurnames"].size() - 1))];
     }
 }
 void PersonRandomBuilder::setAddress() {
     // Addresses don't reflect real places - they are generated randomly from possible values of streets, cities etc
     object->address_.building = std::to_string(getRandomNumber(1, 100));
     object->address_.flat = std::to_string(getRandomNumber(1, 300));
-    object->address_.street = data["streets"][getRandomNumber(0, data["streets"].size() - 1)];
-    object->address_.city = data["cities"][getRandomNumber(0, data["cities"].size() - 1)];
+    object->address_.street = data["streets"][getRandomNumber(0, static_cast<int>(data["streets"].size() - 1))];
+    object->address_.city = data["cities"][getRandomNumber(0, static_cast<int>(data["cities"].size() - 1))];
     object->address_.country = "Polska";
     std::string zipFirstPart = "0" + std::to_string(getRandomNumber(1, 99));
     std::string zipSecondPart = "00" + std::to_string(getRandomNumber(1, 999));
@@ -47,8 +53,6 @@ BuilderError PersonRandomBuilder::setGender() noexcept {
 }
 
 BuilderError PersonRandomBuilder::setPersonalID() {
-    static std::size_t femaleID {0};
-    static std::size_t maleID {0};
     if (gender_ == Gender::Female) {
         if (femaleID == data["femaleIDs"].size()) {
             return BuilderError::BadPersonalID;
@@ -69,9 +73,9 @@ BuilderError PersonRandomBuilder::setPersonalID() {
     return BuilderError::BadPersonalID;
 }
 
-std::size_t PersonRandomBuilder::getRandomNumber(std::size_t from, std::size_t to) noexcept {
+std::size_t PersonRandomBuilder::getRandomNumber(int from, int to) noexcept {
     std::random_device rd;
     std::mt19937 gen {rd()};
-    std::uniform_int_distribution distrib(from, to);
+    std::uniform_int_distribution<> distrib(from, to);
     return distrib(gen);
 }

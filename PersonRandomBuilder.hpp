@@ -15,9 +15,11 @@ public:
     void setCustomData() override = 0;
 
 protected:
-    static std::size_t getRandomNumber(std::size_t from, std::size_t to) noexcept;
+    static std::size_t getRandomNumber(int from, int to) noexcept;
 
 private:
     nlohmann::json data;
     Gender gender_ {Gender::NotSpecified};
+    static std::size_t femaleID;
+    static std::size_t maleID;
 };

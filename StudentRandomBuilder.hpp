@@ -9,5 +9,5 @@ public:
 
 private:
     std::vector<std::size_t> usedIndexes;
-    std::size_t maxNumberOfIndexes {10'000};
+    int maxNumberOfIndexes {10'000};
 };
