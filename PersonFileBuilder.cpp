@@ -1,6 +1,6 @@
 #include "PersonFileBuilder.hpp"
-#include "nlohmann/json.hpp"
 #include "Helpers.hpp"
+#include "nlohmann/json.hpp"
 #include <string>
 
 void PersonFileBuilder::setName() { object->name_ = data_["name"]; }
@@ -16,7 +16,11 @@ void PersonFileBuilder::setAddress() {
 }
 
 BuilderError PersonFileBuilder::setGender() {
-    object->gender_ = static_cast<Gender>(data_["gender"]);
+    Gender gender {static_cast<Gender>(data_["gender"])};
+    if (static_cast<uint8_t>(gender) >= static_cast<uint8_t>(Gender::Size)) {
+        return BuilderError::BadGender;
+    }
+    object->gender_ = gender;
     return BuilderError::OK;
 }
 
