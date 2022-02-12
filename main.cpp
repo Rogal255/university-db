@@ -8,10 +8,10 @@
 #include <memory>
 
 int main() {
+    // Random database generation
     Database db;
     EmployeeRandomBuilder employeeBuilder;
     PersonBuilderDirector director(&employeeBuilder);
-    std::unique_ptr<Person> ptr;
     for (uint8_t i {0}; i < 5; ++i) {
         db.addPerson(director.create());
     }
@@ -21,10 +21,15 @@ int main() {
         db.addPerson(director.create());
     }
     // db.printToConsole();
+
     DatabaseToFile toFile;
-    toFile.saveToFile(db, "test");
+
+    // Saving database to file
+    toFile.saveToFile(db, "database");
+
+    // Loading database from file
     Database db2;
-    toFile.loadFromFile(db2, "test");
+    toFile.loadFromFile(db2, "database");
     db2.printToConsole();
     return 0;
 }

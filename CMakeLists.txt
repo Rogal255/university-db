@@ -11,8 +11,7 @@ FetchContent_Declare(json
         GIT_TAG v3.10.5)
 FetchContent_MakeAvailable(json)
 
-add_executable(university_db
-        main.cpp
+set(SRC_LIST
         Person.cpp
         Student.cpp
         Employee.cpp
@@ -30,5 +29,13 @@ add_executable(university_db
         PersonBuilderDirector.cpp
         DatabaseToFile.cpp)
 
-target_link_libraries(university_db PRIVATE nlohmann_json::nlohmann_json)
+add_library(Database STATIC ${SRC_LIST})
+target_link_libraries(Database PUBLIC nlohmann_json::nlohmann_json)
+
+add_executable(university_db main.cpp)
+
+target_link_libraries(university_db PUBLIC Database)
 file(COPY ./assets DESTINATION ./)
+file(COPY ./assets DESTINATION ./Tests)
+
+add_subdirectory(./Tests)
