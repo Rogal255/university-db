@@ -35,7 +35,7 @@ target_link_libraries(Database PUBLIC nlohmann_json::nlohmann_json)
 add_executable(university_db main.cpp)
 
 target_link_libraries(university_db PUBLIC Database)
-file(COPY ./assets/data.json DESTINATION ./)
+file(COPY ./assets/data.json DESTINATION ./assets)
 file(COPY ./assets DESTINATION ./Tests)
 
 add_subdirectory(./Tests)
