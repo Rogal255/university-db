@@ -9,11 +9,11 @@ Every requirement has been met including additional ones. Personal ID number (PE
 
 Dependencies and acknowledgements:<br />
 
-JSON for modern C++ by Niels Lohmann
+JSON for modern C++ by Niels Lohmann<br />
 https://github.com/nlohmann/json
 
-Lightweight version of above provided by Arthur Sonzogni
+Lightweight version of above provided by Arthur Sonzogni<br />
 https://github.com/ArthurSonzogni/nlohmann_json_cmake_fetchcontent
 
-GoogleTest provided by Google
+GoogleTest provided by Google<br />
 https://github.com/google/googletest
