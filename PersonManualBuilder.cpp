@@ -27,10 +27,11 @@ void PersonManualBuilder::setAddress() noexcept {
 }
 
 BuilderError PersonManualBuilder::setGender() noexcept {
-    uint8_t gender;
+    int gender;
     std::cout << "Gender[0 - female, 1 - male, 2 - not specified] = ";
     std::cin >> gender;
-    if (gender >= static_cast<uint8_t>(Gender::Size)) {
+    if (gender >= static_cast<int>(Gender::Size)) {
+        std::cout << "Bad gender provided. Gender of this person will be not specified.\n";
         return BuilderError::BadGender;
     }
     object->gender_ = static_cast<Gender>(gender);
@@ -39,11 +40,22 @@ BuilderError PersonManualBuilder::setGender() noexcept {
 
 BuilderError PersonManualBuilder::setPersonalID() noexcept {
     std::string personalID;
-    std::cout << "Personal ID = ";
-    std::cin >> personalID;
-    if (checkPersonalID(personalID)) {
-        object->personalID_ = personalID;
-        return BuilderError::OK;
+    uint8_t attempts {0};
+    do {
+        if (attempts > 2) {
+            std::cout << "Provided ID is not valid. Personal ID of this person will be left blank.\n";
+            break;
+        }
+        if (attempts > 0) {
+            std::cout << "Provided ID is not valid. You have " << (3 - attempts) << " more attempts.\n";
+        }
+        attempts++;
+        std::cout << "Personal ID = ";
+        std::cin >> personalID;
+    } while (!checkPersonalID(personalID));
+    if (attempts > 2) {
+        return BuilderError::BadPersonalID;
     }
-    return BuilderError::BadPersonalID;
+    object->personalID_ = personalID;
+    return BuilderError::OK;
 }
